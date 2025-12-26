@@ -18,8 +18,6 @@ export default function Home() {
       {/* ================= HERO ================= */}
       <Hero />
 
-      {/* ================= TRUST / STATS ================= */}
-      <HeroStats />
 
       {/* ================= SERVICES ================= */}
       <Services />

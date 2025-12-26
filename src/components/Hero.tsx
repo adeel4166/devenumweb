@@ -10,91 +10,101 @@ export default function Hero() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % keywords.length);
-    }, 2200);
-
+      setIndex((p) => (p + 1) % keywords.length);
+    }, 2400);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
-      {/* Premium background glow */}
-      <div className="absolute -top-48 -left-48 w-[600px] h-[600px] bg-purple-300/30 rounded-full blur-3xl" />
-      <div className="absolute -bottom-48 -right-48 w-[600px] h-[600px] bg-indigo-300/30 rounded-full blur-3xl" />
+    <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-gradient-to-b from-violet-50 via-white to-indigo-50">
+      {/* Soft glows */}
+      <div className="absolute -top-40 -left-40 w-[520px] h-[520px] bg-purple-300/30 rounded-full blur-3xl" />
+      <div className="absolute -bottom-40 -right-40 w-[520px] h-[520px] bg-indigo-300/30 rounded-full blur-3xl" />
 
-      <div className="relative w-full max-w-6xl rounded-3xl bg-white/80 backdrop-blur-xl border border-black/5 p-10 md:p-20 text-center shadow-[0_0_160px_rgba(139,92,246,0.18)]">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-block mb-6 px-5 py-2 rounded-full bg-purple-100 text-purple-700 text-sm font-medium"
-        >
-          Digital Solutions Company
-        </motion.div>
-
-        {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 45 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
-          className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6"
-        >
-          Building{" "}
-          <span className="relative inline-flex items-center justify-center min-w-[150px] text-purple-600">
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={keywords[index]}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.35 }}
-                className="inline-block"
-              >
-                {keywords[index]}
-              </motion.span>
-            </AnimatePresence>
-
-            {/* Gradient underline */}
-            <span className="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 opacity-70" />
-          </span>{" "}
-          Products
-          <br className="hidden md:block" />
-          with <span className="text-purple-600">Devenum</span>
-        </motion.h1>
-
-        {/* Subheading */}
-        <motion.p
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15 }}
-          className="max-w-3xl mx-auto text-gray-600 text-base md:text-lg leading-relaxed mb-10"
-        >
-          We build high-performance web and mobile applications, creative
-          design, video content, social media management, and Amazon & Daraz
-          e-commerce solutions — all under one roof.
-        </motion.p>
-
-        {/* CTA buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <a
-            href="#contact"
-            className="px-8 py-4 rounded-xl bg-purple-600 text-white font-semibold shadow-lg shadow-purple-500/30 hover:bg-purple-700 transition"
+      {/* CONTENT WRAPPER */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+        <div className="text-center max-w-4xl mx-auto">
+          {/* Small label */}
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-sm tracking-wide text-purple-600 mb-6"
           >
-            Start Your Project
-          </a>
-          <a
-            href="#services"
-            className="px-8 py-4 rounded-xl border border-gray-300 text-gray-800 font-semibold hover:border-purple-500 hover:text-purple-600 transition"
+            DIGITAL AGENCY
+          </motion.p>
+
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-medium text-gray-900 leading-tight"
           >
-            View Services
-          </a>
-        </motion.div>
+            Scale Your Business
+            <br />
+            with Expert{" "}
+            <span className="relative inline-block min-w-[120px]">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={keywords[index]}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -16 }}
+                  transition={{ duration: 0.3 }}
+                  className="bg-gradient-to-r from-purple-600 to-indigo-500 bg-clip-text text-transparent"
+                >
+                  {keywords[index]}
+                </motion.span>
+              </AnimatePresence>
+            </span>{" "}
+            Solutions
+          </motion.h1>
+
+          {/* Tagline */}
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mt-6 text-purple-600"
+          >
+            Innovate. Elevate. Dominate.
+          </motion.p>
+
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="mt-6 text-gray-600 text-base md:text-lg leading-relaxed"
+          >
+            We help growing businesses scale through modern technology,
+            high-impact digital marketing, and reliable systems built for
+            long-term success.
+          </motion.p>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <a
+              href="#contact"
+              className="px-8 py-3 rounded-lg bg-purple-600 text-white text-sm shadow-md shadow-purple-600/30 hover:bg-purple-700 transition"
+            >
+              Let’s Talk
+            </a>
+
+            <a
+              href="#services"
+              className="px-8 py-3 rounded-lg border border-gray-300 text-gray-800 text-sm hover:border-purple-600 hover:text-purple-600 transition"
+            >
+              View Services
+            </a>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

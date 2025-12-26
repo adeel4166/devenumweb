@@ -8,6 +8,7 @@ import {
   Phone,
   MapPin,
 } from "lucide-react";
+import { SiTiktok } from "react-icons/si";
 
 export default function Footer() {
   return (
@@ -21,21 +22,20 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center font-bold text-lg">
-                D
-              </div>
-              <span className="text-xl font-semibold text-gray-900">
-                Devenum
-              </span>
+              <img
+                src="/logo/logo.png"
+                alt="Devenum Logo"
+                className="h-10 w-auto"
+              />
+              
             </div>
 
             <p className="text-gray-600 leading-relaxed mb-6">
-              We build high-quality web & mobile applications, creative
-              design, and growth-focused digital solutions for modern
-              businesses.
+              We build high-quality web & mobile applications, creative design,
+              and growth-focused digital solutions for modern businesses.
             </p>
 
-            {/* Social Icons (FINAL SET) */}
+            {/* Social Icons */}
             <div className="flex items-center gap-3">
               {/* WhatsApp */}
               <a
@@ -91,6 +91,17 @@ export default function Footer() {
                            hover:-translate-y-1 transition-all duration-300"
               >
                 <Linkedin size={18} />
+              </a>
+
+              {/* TikTok (FIXED) */}
+              <a
+                href="#"
+                aria-label="TikTok"
+                className="p-3 rounded-full border border-gray-300 text-gray-600
+                           hover:text-black hover:border-black
+                           hover:-translate-y-1 transition-all duration-300"
+              >
+                <SiTiktok size={18} />
               </a>
 
               {/* Email */}

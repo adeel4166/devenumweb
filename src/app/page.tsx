@@ -23,7 +23,7 @@ export default function Home() {
       <Services />
 
       {/* ================= PORTFOLIO ================= */}
-      <Portfolio />
+      {/* <Portfolio /> */}
 
       {/* ================= TEAM ================= */}
       <TeamSection />

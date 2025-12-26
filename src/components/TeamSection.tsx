@@ -2,25 +2,40 @@
 
 import { motion } from "framer-motion";
 
-const teamMembers = [
+const leadership = [
   {
     name: "Adeel Ahmad",
-    role: "Project Manager",
+    role: "Web & Mobile Developer",
+    badge: "CEO",
     image: "/team/adeel1.jpeg",
+    desc: "Leading projects with a focus on strategy, execution, and delivering scalable digital solutions that drive long-term business success.",
   },
+];
+
+const teamMembers = [
   {
     name: "Talha Naeem",
-    role: "Full-Stack Developer",
+    role: "Creative Director",
     image: "/team/nauman.jpg",
   },
   {
     name: "Abdul Haseeb",
-    role: "Mobile App Developer",
+    role: "Game Developer",
     image: "/team/hassan.jpg",
+  },
+    {
+    name: "Danish Khan",
+    role: "Amazon Specialist",
+    image: "/team/danish.jpeg",
+  },
+   {
+    name: "Abubakar",
+    role: "Tech lead",
+    image: "/team/abubakr.jpeg",
   },
   {
     name: "Umair Tahir",
-    role: "UI / UX Designer",
+    role: "Video Editor",
     image: "/team/umair.jpeg",
   },
   {
@@ -33,95 +48,136 @@ const teamMembers = [
     role: "Digital Marketing Specialist",
     image: "/team/shami.jpeg",
   },
+ 
 ];
 
 export default function TeamSection() {
   return (
-    <section
-      id="team"
-      className="relative py-28 px-6 overflow-hidden bg-gradient-to-b from-white via-purple-50/40 to-white"
-    >
-      {/* Background blobs */}
-      <div className="absolute -top-40 -right-40 w-[420px] h-[420px] rounded-full bg-purple-200/40 blur-3xl" />
-      <div className="absolute bottom-0 -left-40 w-[460px] h-[460px] rounded-full bg-indigo-200/40 blur-3xl" />
-
-      <div className="relative max-w-7xl mx-auto">
+    <section id="team" className="py-24 px-6 bg-white">
+      <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center max-w-3xl mx-auto mb-20"
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-5">
-            Meet Our <span className="text-purple-600">Expert Team</span>
+          <p className="text-sm tracking-[0.25em] text-purple-600 mb-4">
+            OUR TEAM
+          </p>
+          <h2 className="text-3xl md:text-4xl font-medium text-gray-900 mb-3">
+            Leadership & Team
           </h2>
-          <p className="text-gray-600 text-lg">
-            Professionals behind our success.
+          <p className="text-gray-600">
+            Experienced professionals driving Devenum forward.
           </p>
         </motion.div>
 
-        {/* Team Grid */}
+        {/* 👑 LEADERSHIP */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="flex justify-center mb-20"
+        >
+          {leadership.map((leader, i) => (
+            <div
+              key={i}
+              className="
+                w-full max-w-4xl
+                flex flex-col sm:flex-row items-center
+                gap-6 p-8
+                rounded-3xl
+                border border-purple-200
+                bg-purple-50/60
+              "
+            >
+              {/* Avatar */}
+              <img
+                src={leader.image}
+                alt={leader.name}
+                className="
+                  w-[88px] h-[88px]
+                  rounded-full object-cover
+                  border border-purple-200
+                "
+              />
+
+              {/* Info */}
+              <div className="text-center sm:text-left">
+                {/* Name + Badge */}
+                <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                  <h3 className="text-xl font-medium text-gray-900">
+                    {leader.name}
+                  </h3>
+
+                  <span
+                    className="
+                      inline-flex items-center
+                      px-3 py-1
+                      rounded-full
+                      text-xs font-medium
+                      bg-purple-600/10
+                      text-purple-700
+                    "
+                  >
+                    {leader.badge}
+                  </span>
+                </div>
+
+                {/* Role */}
+                <p className="text-purple-600 text-sm mt-1">
+                  {leader.role}
+                </p>
+
+                {/* Description */}
+                <p className="mt-3 text-gray-600 text-sm leading-relaxed">
+                  {leader.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* 👥 TEAM GRID */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {teamMembers.map((member, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
+              transition={{ duration: 0.4, delay: i * 0.04 }}
               className="
-                group relative overflow-hidden rounded-3xl
-                bg-white/80 backdrop-blur-xl
-                border border-purple-100
-                shadow-[0_20px_50px_rgba(0,0,0,0.08)]
-                hover:shadow-[0_35px_80px_rgba(139,92,246,0.25)]
+                flex items-center gap-6
+                p-6 rounded-2xl
+                border border-gray-200
+                bg-white
+                hover:border-purple-500
+                hover:-translate-y-1
                 transition-all duration-300
               "
             >
-              {/* Image */}
-              <div className="relative h-[320px] overflow-hidden">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  loading="lazy"
-                  className="
-                    w-full h-full object-cover
-                    grayscale-[40%] brightness-[0.95]
-                    group-hover:grayscale-0 group-hover:brightness-100
-                    scale-100 group-hover:scale-105
-                    transition-all duration-700 ease-out
-                  "
-                />
+              <img
+                src={member.image}
+                alt={member.name}
+                className="
+                  w-[72px] h-[72px]
+                  rounded-full object-cover
+                  border border-gray-200
+                "
+              />
 
-                {/* Hover Overlay (soft) */}
-                <div className="
-                  absolute inset-0
-                  bg-gradient-to-t from-purple-900/30 via-purple-500/10 to-transparent
-                  opacity-0 group-hover:opacity-100
-                  transition-opacity duration-500
-                " />
-              </div>
-
-              {/* Info */}
-              <div className="relative p-6 text-center">
-                <h4 className="text-xl font-semibold text-gray-900 mb-1">
+              <div>
+                <h4 className="text-lg font-medium text-gray-900 leading-tight">
                   {member.name}
                 </h4>
-                <p className="text-sm text-purple-600 font-medium">
+                <p className="text-sm text-purple-600 mt-0.5">
                   {member.role}
                 </p>
               </div>
-
-              {/* Bottom Accent */}
-              <div className="
-                absolute bottom-0 left-1/2 -translate-x-1/2
-                h-[3px] w-0 rounded-full
-                bg-gradient-to-r from-purple-500 to-indigo-500
-                group-hover:w-2/3
-                transition-all duration-300
-              " />
             </motion.div>
           ))}
         </div>

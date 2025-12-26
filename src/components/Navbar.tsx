@@ -8,6 +8,7 @@ import {
   Briefcase,
   Layers,
   User,
+  DollarSign,
 } from "lucide-react";
 
 export default function Navbar() {
@@ -55,6 +56,7 @@ export default function Navbar() {
           {[
             { name: "Services", id: "services" },
             { name: "Portfolio", id: "portfolio" },
+            { name: "Pricing", id: "pricing" }, // ✅ NEW
             { name: "About", id: "about" },
           ].map((item) => (
             <li key={item.name}>
@@ -82,6 +84,8 @@ export default function Navbar() {
 
         {/* RIGHT ACTIONS (DESKTOP) */}
         <div className="hidden md:flex items-center gap-4">
+          
+
           <button
             onClick={() => scrollToId("contact")}
             className="
@@ -130,6 +134,16 @@ export default function Navbar() {
               >
                 <Layers size={18} className="text-purple-600" />
                 Portfolio
+              </button>
+            </li>
+
+            <li>
+              <button
+                onClick={() => scrollToId("pricing")}
+                className="flex items-center gap-3"
+              >
+                <DollarSign size={18} className="text-purple-600" />
+                Pricing
               </button>
             </li>
 

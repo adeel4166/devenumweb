@@ -13,34 +13,53 @@ import {
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
+  // 🔹 Smooth scroll helper
+  const scrollToId = (id?: string) => {
+    setOpen(false);
+
+    if (!id) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <nav
       className="
         fixed top-0 left-0 w-full z-50
-        bg-white/70
-        backdrop-blur-xl
+        bg-white/70 backdrop-blur-xl
         border-b border-black/5
       "
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between relative">
-
         {/* LOGO (LEFT) */}
-        <img
-          src="/logo/logo.png"
-          alt="Devenum Logo"
-          className="h-10 w-auto"
-        />
+        <button
+          onClick={() => scrollToId()}
+          className="flex items-center"
+          aria-label="Go to top"
+        >
+          <img
+            src="/logo/logo.png"
+            alt="Devenum Logo"
+            className="h-10 w-auto cursor-pointer"
+          />
+        </button>
 
         {/* DESKTOP MENU (CENTER) */}
         <ul className="hidden md:flex gap-10 font-medium absolute left-1/2 -translate-x-1/2 text-gray-700">
           {[
-            { name: "Services", href: "#services" },
-            { name: "Portfolio", href: "#portfolio" },
-            { name: "About", href: "#about" },
+            { name: "Services", id: "services" },
+            { name: "Portfolio", id: "portfolio" },
+            { name: "About", id: "about" },
           ].map((item) => (
             <li key={item.name}>
-              <a
-                href={item.href}
+              <button
+                onClick={() => scrollToId(item.id)}
                 className="
                   relative group transition
                   hover:text-purple-600
@@ -56,15 +75,15 @@ export default function Navbar() {
                     group-hover:w-full
                   "
                 />
-              </a>
+              </button>
             </li>
           ))}
         </ul>
 
         {/* RIGHT ACTIONS (DESKTOP) */}
         <div className="hidden md:flex items-center gap-4">
-          <a
-            href="#contact"
+          <button
+            onClick={() => scrollToId("contact")}
             className="
               flex items-center gap-2
               bg-purple-600 text-white
@@ -77,13 +96,14 @@ export default function Navbar() {
           >
             <MessageCircle size={18} />
             Let’s Talk
-          </a>
+          </button>
         </div>
 
         {/* MOBILE MENU ICON */}
         <button
           className="md:hidden text-gray-700"
           onClick={() => setOpen(!open)}
+          aria-label="Toggle menu"
         >
           {open ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -93,46 +113,42 @@ export default function Navbar() {
       {open && (
         <div className="md:hidden bg-white border-t border-black/5">
           <ul className="flex flex-col gap-6 py-8 px-6 font-medium text-gray-700">
-
             <li>
-              <a
-                onClick={() => setOpen(false)}
-                href="#services"
+              <button
+                onClick={() => scrollToId("services")}
                 className="flex items-center gap-3"
               >
                 <Briefcase size={18} className="text-purple-600" />
                 Services
-              </a>
+              </button>
             </li>
 
             <li>
-              <a
-                onClick={() => setOpen(false)}
-                href="#portfolio"
+              <button
+                onClick={() => scrollToId("portfolio")}
                 className="flex items-center gap-3"
               >
                 <Layers size={18} className="text-purple-600" />
                 Portfolio
-              </a>
+              </button>
             </li>
 
             <li>
-              <a
-                onClick={() => setOpen(false)}
-                href="#about"
+              <button
+                onClick={() => scrollToId("about")}
                 className="flex items-center gap-3"
               >
                 <User size={18} className="text-purple-600" />
                 About
-              </a>
+              </button>
             </li>
 
             {/* CTA (MOBILE) */}
             <li className="pt-4">
-              <a
-                onClick={() => setOpen(false)}
-                href="#contact"
+              <button
+                onClick={() => scrollToId("contact")}
                 className="
+                  w-full
                   flex items-center justify-center gap-2
                   bg-purple-600 text-white
                   py-3 rounded-xl font-semibold
@@ -140,9 +156,8 @@ export default function Navbar() {
               >
                 <MessageCircle size={18} />
                 Let’s Talk
-              </a>
+              </button>
             </li>
-
           </ul>
         </div>
       )}

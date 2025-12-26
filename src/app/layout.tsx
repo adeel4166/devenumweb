@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 /* ================================
    SEO / METADATA
@@ -71,6 +72,9 @@ export default function RootLayout({
         "
       >
         {children}
+
+        {/* Sticky WhatsApp Floating Button */}
+        <WhatsAppButton />
       </body>
     </html>
   );

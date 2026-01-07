@@ -122,7 +122,7 @@ export default function About() {
                   {service.title}
                 </h4>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  Ahmed Professional solutions tailored for real business growth.
+                  Professional solutions tailored for real business growth.
                 </p>
               </div>
             ))}

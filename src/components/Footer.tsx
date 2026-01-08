@@ -12,11 +12,24 @@ import { SiTiktok } from "react-icons/si";
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-gray-50 border-t border-gray-200">
+    <footer
+      className="
+        relative overflow-hidden
+        bg-gradient-to-r
+        from-[#FCEEFF]
+        to-[#EEF5FF]
+        border-t border-gray-200
+      "
+    >
       {/* Gradient Accent */}
-      <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-500" />
+      <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-500 pointer-events-none" />
 
-      <div className="relative max-w-6xl mx-auto px-6 py-16">
+      {/* Soft background blobs (FIXED) */}
+      <div className="absolute -top-40 -left-40 w-[420px] h-[420px] bg-[#FCEEFF] rounded-full blur-3xl opacity-70 pointer-events-none" />
+      <div className="absolute -bottom-40 -right-40 w-[420px] h-[420px] bg-[#EEF5FF] rounded-full blur-3xl opacity-70 pointer-events-none" />
+
+      {/* MAIN CONTENT */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-16">
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
@@ -27,7 +40,6 @@ export default function Footer() {
                 alt="Devenum Logo"
                 className="h-10 w-auto"
               />
-              
             </div>
 
             <p className="text-gray-600 leading-relaxed mb-6">
@@ -37,7 +49,6 @@ export default function Footer() {
 
             {/* Social Icons */}
             <div className="flex items-center gap-3">
-              {/* WhatsApp */}
               <a
                 href="https://wa.me/923064166107"
                 target="_blank"
@@ -49,9 +60,8 @@ export default function Footer() {
                 <MessageCircle size={18} />
               </a>
 
-              {/* Facebook */}
               <a
-                href="#"
+                href="https://www.facebook.com/share/1AfUfhnHVA/"
                 aria-label="Facebook"
                 className="p-3 rounded-full border border-gray-300 text-gray-600
                            hover:text-blue-600 hover:border-blue-600
@@ -60,9 +70,8 @@ export default function Footer() {
                 <Facebook size={18} />
               </a>
 
-              {/* Instagram */}
               <a
-                href="#"
+                href="https://www.instagram.com/devenum01?igsh=MTZ2eWxqa2h2ejc2NQ=="
                 aria-label="Instagram"
                 className="p-3 rounded-full border border-gray-300 text-gray-600
                            hover:text-pink-600 hover:border-pink-600
@@ -71,7 +80,6 @@ export default function Footer() {
                 <Instagram size={18} />
               </a>
 
-              {/* Twitter / X */}
               <a
                 href="#"
                 aria-label="Twitter"
@@ -82,9 +90,8 @@ export default function Footer() {
                 <Twitter size={18} />
               </a>
 
-              {/* LinkedIn */}
               <a
-                href="#"
+                href="https://www.linkedin.com/company/devenum/"
                 aria-label="LinkedIn"
                 className="p-3 rounded-full border border-gray-300 text-gray-600
                            hover:text-blue-700 hover:border-blue-700
@@ -93,9 +100,8 @@ export default function Footer() {
                 <Linkedin size={18} />
               </a>
 
-              {/* TikTok (FIXED) */}
               <a
-                href="#"
+                href="https://www.tiktok.com/@devenum01?_r=1&_t=ZS-92tsW01csYS"
                 aria-label="TikTok"
                 className="p-3 rounded-full border border-gray-300 text-gray-600
                            hover:text-black hover:border-black
@@ -104,18 +110,7 @@ export default function Footer() {
                 <SiTiktok size={18} />
               </a>
 
-              {/* Email */}
-              <a
-                href="mailto:devenum01@gmail.com"
-                aria-label="Email"
-                className="p-3 rounded-full border border-gray-300 text-gray-600
-                           hover:text-purple-600 hover:border-purple-600
-                           hover:-translate-y-1 transition-all duration-300"
-              >
-                <Mail size={18} />
-              </a>
-
-              {/* Phone */}
+              {/* PHONE (NOW WORKING) */}
               <a
                 href="tel:+923064166107"
                 aria-label="Phone"
@@ -128,7 +123,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Quick Links (NOW WORKING) */}
           <div>
             <h4 className="text-lg font-semibold text-gray-900 mb-4">
               Quick Links
@@ -139,6 +134,7 @@ export default function Footer() {
                 { name: "Services", href: "#services" },
                 { name: "About", href: "#about" },
                 { name: "Contact", href: "#contact" },
+                { name: "Portfolio", href: "#portfolio" },
               ].map((link, i) => (
                 <li key={i}>
                   <a
@@ -163,7 +159,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-purple-600 mt-1" />
                 <span>
-                  Raiwind Road, Lahore <br />
+                  Chinar Bagh Society, Raiwind Road, Lahore <br />
                   Punjab, Pakistan
                 </span>
               </li>

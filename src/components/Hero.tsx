@@ -16,10 +16,20 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-gradient-to-b from-violet-50 via-white to-indigo-50">
+    <section
+      className="
+        relative
+        min-h-[85vh]
+        flex items-center
+        overflow-hidden
+        bg-gradient-to-r
+        from-[#FCEEFF]
+        to-[#EEF5FF]
+      "
+    >
       {/* Soft glows */}
-      <div className="absolute -top-40 -left-40 w-[520px] h-[520px] bg-purple-300/30 rounded-full blur-3xl" />
-      <div className="absolute -bottom-40 -right-40 w-[520px] h-[520px] bg-indigo-300/30 rounded-full blur-3xl" />
+      <div className="absolute -top-40 -left-40 w-[520px] h-[520px] bg-[#FCEEFF] rounded-full blur-3xl opacity-70" />
+      <div className="absolute -bottom-40 -right-40 w-[520px] h-[520px] bg-[#EEF5FF] rounded-full blur-3xl opacity-70" />
 
       {/* CONTENT WRAPPER */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16">

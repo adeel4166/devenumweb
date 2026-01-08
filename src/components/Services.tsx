@@ -64,12 +64,21 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative py-24 px-6 bg-gray-50 overflow-hidden"
+      className="
+        relative
+        py-24 px-6
+        bg-gradient-to-r
+        from-[#FCEEFF]
+        to-[#EEF5FF]
+        overflow-hidden
+      "
     >
-      <div className="absolute -top-32 -left-32 w-[420px] h-[420px] bg-purple-200/40 rounded-full blur-3xl" />
-      <div className="absolute -bottom-32 -right-32 w-[420px] h-[420px] bg-indigo-200/40 rounded-full blur-3xl" />
+      {/* SOFT BACKGROUND ACCENTS */}
+      <div className="absolute -top-32 -left-32 w-[420px] h-[420px] bg-[#FCEEFF] rounded-full blur-3xl opacity-70" />
+      <div className="absolute -bottom-32 -right-32 w-[420px] h-[420px] bg-[#EEF5FF] rounded-full blur-3xl opacity-70" />
 
       <div className="relative max-w-6xl mx-auto">
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -85,6 +94,7 @@ export default function Services() {
           </p>
         </motion.div>
 
+        {/* SERVICES GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((item, i) => (
             <motion.div

@@ -17,9 +17,20 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-28 px-6 bg-white"
+      className="
+        relative
+        py-28 px-6
+        bg-linear-to-r
+        from-[#FCEEFF]
+        to-[#EEF5FF]
+        overflow-hidden
+      "
     >
-      <div className="max-w-7xl mx-auto">
+      {/* SOFT BACKGROUND BLOBS */}
+      <div className="absolute -top-40 -left-40 w-[26.5px] h-[26.5px] bg-[#FCEEFF] rounded-full blur-3xl opacity-70" />
+      <div className="absolute -bottom-40 -right-40 w-[26.5px] h-[26.5px] bg-[#EEF5FF] rounded-full blur-3xl opacity-70" />
+
+      <div className="relative max-w-7xl mx-auto">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -76,7 +87,7 @@ export default function About() {
                 },
               ].map((item, i) => (
                 <div key={i} className="flex gap-4 items-start">
-                  <div className="w-9 h-9 rounded-lg border border-purple-200 text-purple-600 flex items-center justify-center">
+                  <div className="w-9 h-9 rounded-lg border border-purple-200 bg-white text-purple-600 flex items-center justify-center">
                     {item.icon}
                   </div>
                   <div>
@@ -110,9 +121,14 @@ export default function About() {
             ].map((service, i) => (
               <div
                 key={i}
-                className="p-7 rounded-2xl border border-gray-200 bg-white
-                           hover:border-purple-500 hover:-translate-y-1
-                           transition-all duration-300"
+                className="
+                  p-7 rounded-2xl
+                  bg-white
+                  border border-gray-200
+                  hover:border-purple-500
+                  hover:-translate-y-1
+                  transition-all duration-300
+                "
               >
                 <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center mb-5">
                   {service.icon}

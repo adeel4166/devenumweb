@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import {
   Menu,
   X,
@@ -13,20 +14,38 @@ import {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
-  // 🔹 Smooth scroll helper
+  /* ===============================
+     SMART SCROLL / NAVIGATION
+  =============================== */
   const scrollToId = (id?: string) => {
     setOpen(false);
 
-    if (!id) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    // If on home page
+    if (pathname === "/") {
+      if (!id) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
       return;
     }
 
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    // If on other page → go home then scroll
+    if (id) router.push(`/#${id}`);
+    else router.push("/");
+  };
+
+  /* ===============================
+     ACTIVE LINK CHECK
+  =============================== */
+  const isActive = (key: string) => {
+    if (key === "portfolio") return pathname === "/portfolio";
+    return false;
   };
 
   return (
@@ -38,7 +57,7 @@ export default function Navbar() {
       "
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between relative">
-        {/* LOGO (LEFT) */}
+        {/* LOGO */}
         <button
           onClick={() => scrollToId()}
           className="flex items-center"
@@ -51,21 +70,18 @@ export default function Navbar() {
           />
         </button>
 
-        {/* DESKTOP MENU (CENTER) */}
+        {/* ================= DESKTOP MENU ================= */}
         <ul className="hidden md:flex gap-10 font-medium absolute left-1/2 -translate-x-1/2 text-gray-700">
+          {/* HOME SECTIONS */}
           {[
             { name: "Services", id: "services" },
-            { name: "Portfolio", id: "portfolio" },
-            { name: "Pricing", id: "pricing" }, // ✅ NEW
+            { name: "Pricing", id: "pricing" },
             { name: "About", id: "about" },
           ].map((item) => (
             <li key={item.name}>
               <button
                 onClick={() => scrollToId(item.id)}
-                className="
-                  relative group transition
-                  hover:text-purple-600
-                "
+                className="relative group transition hover:text-purple-600"
               >
                 {item.name}
                 <span
@@ -80,12 +96,32 @@ export default function Navbar() {
               </button>
             </li>
           ))}
+
+          {/* PORTFOLIO (PAGE LINK) */}
+          <li>
+            <button
+              onClick={() => router.push("/portfolio")}
+              className={`relative group transition
+                ${
+                  isActive("portfolio")
+                    ? "text-purple-600 font-semibold"
+                    : "hover:text-purple-600"
+                }
+              `}
+            >
+              Portfolio
+              <span
+                className={`
+                  absolute left-0 -bottom-1 h-[2px] bg-purple-600 transition-all duration-300
+                  ${isActive("portfolio") ? "w-full" : "w-0 group-hover:w-full"}
+                `}
+              />
+            </button>
+          </li>
         </ul>
 
-        {/* RIGHT ACTIONS (DESKTOP) */}
+        {/* ================= DESKTOP CTA ================= */}
         <div className="hidden md:flex items-center gap-4">
-          
-
           <button
             onClick={() => scrollToId("contact")}
             className="
@@ -103,7 +139,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* MOBILE MENU ICON */}
+        {/* ================= MOBILE TOGGLE ================= */}
         <button
           className="md:hidden text-gray-700"
           onClick={() => setOpen(!open)}
@@ -113,7 +149,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* MOBILE MENU */}
+      {/* ================= MOBILE MENU ================= */}
       {open && (
         <div className="md:hidden bg-white border-t border-black/5">
           <ul className="flex flex-col gap-6 py-8 px-6 font-medium text-gray-700">
@@ -129,10 +165,13 @@ export default function Navbar() {
 
             <li>
               <button
-                onClick={() => scrollToId("portfolio")}
-                className="flex items-center gap-3"
+                onClick={() => {
+                  setOpen(false);
+                  router.push("/portfolio");
+                }}
+                className="flex items-center gap-3 font-semibold text-purple-600"
               >
-                <Layers size={18} className="text-purple-600" />
+                <Layers size={18} />
                 Portfolio
               </button>
             </li>
@@ -157,7 +196,7 @@ export default function Navbar() {
               </button>
             </li>
 
-            {/* CTA (MOBILE) */}
+            {/* MOBILE CTA */}
             <li className="pt-4">
               <button
                 onClick={() => scrollToId("contact")}

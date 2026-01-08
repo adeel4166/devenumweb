@@ -61,7 +61,7 @@ export default function ServiceCard({ title, desc, features }: Props) {
             hover:shadow-lg hover:shadow-purple-500/30
           "
         >
-          Let’s Get Started
+          Get Started
         </a>
       </div>
     </div>

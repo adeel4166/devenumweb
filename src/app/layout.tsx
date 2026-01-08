@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
+
 /* ================================
    SEO / METADATA
 ================================ */
@@ -65,7 +66,7 @@ export default function RootLayout({
       <body
         className="
           min-h-screen
-          bg-gradient-to-r
+          bg-linear-to-r
           from-[#FCEEFF]
           to-[#EEF5FF]
           text-gray-900

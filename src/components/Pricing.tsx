@@ -110,18 +110,25 @@ export default function Pricing() {
   return (
     <section
       id="pricing"
-      className="relative py-28 px-6 bg-white overflow-hidden"
+      className="
+        relative
+        py-28 px-6
+        bg-gradient-to-r
+        from-[#FCEEFF]
+        to-[#EEF5FF]
+        overflow-hidden
+      "
     >
       {/* Background bubbles */}
       <motion.div
         animate={{ y: [0, -30, 0] }}
         transition={{ repeat: Infinity, duration: 10 }}
-        className="absolute -top-40 -left-40 w-[520px] h-[520px] bg-purple-200/40 rounded-full blur-3xl"
+        className="absolute -top-40 -left-40 w-[520px] h-[520px] bg-[#FCEEFF] rounded-full blur-3xl opacity-70"
       />
       <motion.div
         animate={{ y: [0, 40, 0] }}
         transition={{ repeat: Infinity, duration: 12 }}
-        className="absolute -bottom-40 -right-40 w-[520px] h-[520px] bg-indigo-200/40 rounded-full blur-3xl"
+        className="absolute -bottom-40 -right-40 w-[520px] h-[520px] bg-[#EEF5FF] rounded-full blur-3xl opacity-70"
       />
 
       <div className="relative max-w-7xl mx-auto">
@@ -198,8 +205,8 @@ function PricingGrid({ plans }: { plans: PricingPlan[] }) {
             }`}
           >
             {/* Inner bubbles */}
-            <div className="absolute -top-32 -right-32 w-[360px] h-[360px] rounded-full bg-purple-100/70" />
-            <div className="absolute -bottom-36 -left-36 w-[380px] h-[380px] rounded-full bg-indigo-100/70" />
+            <div className="absolute -top-32 -right-32 w-[360px] h-[360px] rounded-full bg-[#FCEEFF] opacity-70" />
+            <div className="absolute -bottom-36 -left-36 w-[380px] h-[380px] rounded-full bg-[#EEF5FF] opacity-70" />
 
             <div className="relative z-10">
               <h4 className="text-xl font-bold text-gray-900 mb-1">
@@ -235,7 +242,7 @@ function PricingGrid({ plans }: { plans: PricingPlan[] }) {
                     : "border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white"
                 }`}
               >
-                Get Started on WhatsApp
+                Get Started
               </a>
             </div>
           </div>

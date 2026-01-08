@@ -23,12 +23,12 @@ const teamMembers = [
     role: "Game Developer",
     image: "/team/hassan.jpg",
   },
-    {
+  {
     name: "Danish Khan",
     role: "Amazon Specialist",
     image: "/team/danish.jpeg",
   },
-   {
+  {
     name: "Abubakar",
     role: "Tech lead",
     image: "/team/abubakr.jpeg",
@@ -48,13 +48,26 @@ const teamMembers = [
     role: "Digital Marketing Specialist",
     image: "/team/shami.jpeg",
   },
- 
 ];
 
 export default function TeamSection() {
   return (
-    <section id="team" className="py-24 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section
+      id="team"
+      className="
+        relative
+        py-24 px-6
+        bg-gradient-to-r
+        from-[#FCEEFF]
+        to-[#EEF5FF]
+        overflow-hidden
+      "
+    >
+      {/* SOFT BACKGROUND ACCENTS */}
+      <div className="absolute -top-40 -left-40 w-[420px] h-[420px] bg-[#FCEEFF] rounded-full blur-3xl opacity-70" />
+      <div className="absolute -bottom-40 -right-40 w-[420px] h-[420px] bg-[#EEF5FF] rounded-full blur-3xl opacity-70" />
+
+      <div className="relative max-w-7xl mx-auto">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -91,7 +104,8 @@ export default function TeamSection() {
                 gap-6 p-8
                 rounded-3xl
                 border border-purple-200
-                bg-purple-50/60
+                bg-white/70
+                backdrop-blur-sm
               "
             >
               {/* Avatar */}

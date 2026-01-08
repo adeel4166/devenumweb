@@ -48,7 +48,7 @@ export default function Contact() {
       recaptchaToken: captcha,
     };
 
-    const res = await fetch("/api/contact", {
+    const res = await fetch("/api/email", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -73,7 +73,10 @@ export default function Contact() {
   }
 
   return (
-    <section className="py-24 px-6 bg-linear-to-br from-purple-50 to-indigo-50">
+    <section
+      id="contact"
+      className="scroll-mt-28 py-24 px-6 bg-linear-to-br from-purple-50 to-indigo-50"
+    >
       {/* AUDIO */}
       <audio ref={successAudio} src="/sounds/success.mp3" preload="auto" />
       <audio ref={errorAudio} src="/sounds/error.mp3" preload="auto" />

@@ -14,12 +14,12 @@ export const metadata: Metadata = {
   description:
     "Devenum is a modern digital solutions company specializing in SaaS products, web apps, and high-performance digital experiences.",
 
-  metadataBase: new URL("https://devenum.vercel.app"),
+  metadataBase: new URL("https://devenum.com"),
 
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://devenum.vercel.app",
+    url: "https://devenum.com",
     title: "Devenum — Building Premium Digital Products",
     description:
       "Modern SaaS, web apps, and premium digital experiences crafted by Devenum.",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: "/icon.png",
+    icon: "/favicon.ico",
     apple: "/apple-icon.png",
   },
 };

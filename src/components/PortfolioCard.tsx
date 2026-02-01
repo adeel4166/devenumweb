@@ -1,47 +1,59 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useRef } from "react";
 
 interface Props {
   title: string;
-  description: string;
+  framework: string;
   image?: string;
   video?: string;
   demoLink?: string;
+  index?:number;
 }
 
 export default function PortfolioCard({
   title,
-  description,
+  framework,
   image,
   video,
   demoLink = "#",
+  index =0
 }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // smooth image scroll
+  // 🔥 NEW: animation controller (this fixes speed issue)
+  const animationRef = useRef<number | null>(null);
+
+  // 🔥 FIXED smooth image scroll (now duration REALLY works)
   const smoothScroll = (down: boolean) => {
     const el = scrollRef.current;
     if (!el) return;
 
+    // cancel any running animation
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+    }
+
     const start = el.scrollTop;
     const end = down ? el.scrollHeight - el.clientHeight : 0;
-    const duration = 1200;
+    const duration = 2500; // ⏱️ CHANGE THIS to control speed
     const startTime = performance.now();
 
     const animate = (time: number) => {
       const progress = Math.min((time - startTime) / duration, 1);
       el.scrollTop = start + (end - start) * progress;
-      if (progress < 1) requestAnimationFrame(animate);
+
+      if (progress < 1) {
+        animationRef.current = requestAnimationFrame(animate);
+      }
     };
 
-    requestAnimationFrame(animate);
+    animationRef.current = requestAnimationFrame(animate);
   };
 
   return (
-    <motion.div
+    <div
       onMouseEnter={() => {
         smoothScroll(true);
         videoRef.current?.play();
@@ -50,11 +62,6 @@ export default function PortfolioCard({
         smoothScroll(false);
         videoRef.current?.pause();
       }}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -6 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-      viewport={{ once: true }}
       className="
         bg-white
         rounded-3xl
@@ -62,13 +69,12 @@ export default function PortfolioCard({
         shadow-[0_16px_40px_rgba(0,0,0,0.08)]
         overflow-hidden
       "
+      data-aos='flip-up'
+       data-aos-delay={index * 200}
     >
       {/* MEDIA */}
       {image && (
-        <div
-          ref={scrollRef}
-          className="h-[280px] overflow-hidden"
-        >
+        <div ref={scrollRef} className="h-50 overflow-hidden">
           <img
             src={image}
             alt={title}
@@ -90,18 +96,19 @@ export default function PortfolioCard({
 
       {/* CONTENT */}
       <div className="p-5 text-center">
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+        <h3 className="text-lg font-semibold text-gray-900 ">
           {title}
         </h3>
+        <div className="text-center text-[12px] text-gray-500  mb-[5]" >
+          ({framework})
+        </div>
 
-        <p className="text-gray-600 text-sm leading-relaxed mb-4">
-          {description}
-        </p>
 
-        <a
-          href={demoLink}
-          target="_blank"
-          className="
+        {demoLink !== "#" &&
+          <a
+            href={demoLink}
+            target="_blank"
+            className="
             inline-block
             rounded-full
             bg-gradient-to-r from-purple-500 to-indigo-500
@@ -111,10 +118,12 @@ export default function PortfolioCard({
             transition
             hover:opacity-90
           "
-        >
-          View Project
-        </a>
+          >
+            View Project
+          </a>
+        }
+
       </div>
-    </motion.div>
+    </div>
   );
 }

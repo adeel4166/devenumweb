@@ -1,6 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import AOSProvider from "@/components/AosProvider";
+
 
 
 /* ================================
@@ -14,12 +16,12 @@ export const metadata: Metadata = {
   description:
     "Devenum is a modern digital solutions company specializing in SaaS products, web apps, and high-performance digital experiences.",
 
-  metadataBase: new URL("https://devenum.com"),
+  metadataBase: new URL("https://devenum.vercel.app"),
 
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://devenum.com",
+    url: "https://devenum.vercel.app",
     title: "Devenum — Building Premium Digital Products",
     description:
       "Modern SaaS, web apps, and premium digital experiences crafted by Devenum.",
@@ -48,8 +50,7 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: "/icon.png",
     apple: "/apple-icon.png",
   },
 };
@@ -73,7 +74,10 @@ export default function RootLayout({
           text-gray-900
         "
       >
+        <AOSProvider>
+
         {children}
+        </AOSProvider>
 
         {/* Sticky WhatsApp Floating Button */}
         <WhatsAppButton />

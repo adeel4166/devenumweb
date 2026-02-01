@@ -9,17 +9,26 @@ const previewProjects = [
     title: "ASH MEDIA SOLUTIONS",
     image: "/portfolio/ashmedia.jpg",
     service: "web",
-    description:
-      "A modern music platform with smooth UI, animations and responsive layout.",
+    framework:
+      "Next JS",
     demoLink: "https://ashmediasolutions1.vercel.app",
   },
   {
     title: "CHROMA PIGMENT AND DYESTUFF",
     image: "/portfolio/chromapigment.jpg",
     service: "web",
-    description:
-      "An eco-friendly business website focused on sustainability and clean design.",
+    framework:
+      "Next JS",
     demoLink: "https://www.chromapigmentanddyestuff.com",
+  },
+   {
+    title: "Edlink Education & Visa Services",
+    image: "/portfolio/edlink.png",
+    service: "web",
+    framework: 'Wordpress',
+    description:
+      "Designed and developed the EdLink Education & Visa Services website using WordPress, focusing on responsiveness, SEO, and a clear user journey. The site highlights global study abroad consulting, visa support, and scholarship services to help students pursue opportunities overseas.",
+    demoLink: "https://edlink.com.au/",
   },
 ];
 
@@ -51,12 +60,12 @@ export default function PortfolioPreview() {
       </motion.h2>
 
       {/* PORTFOLIO GRID */}
-      <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 px-6">
+      <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6">
         {previewProjects.map((project, i) => (
           <PortfolioCard
             key={i}
             title={project.title}
-            description={project.description}
+            framework={project.framework}
             image={project.image}
             demoLink={project.demoLink}
           />
